@@ -37,8 +37,26 @@ getdatapromise
     console.log(err);
 })
 
+
 //GETTING DATA FROM AWS...
-console.log("edited");
-$.get("a1a9pfh1z4hsle-ats.iot.us-east-2.amazonaws.com",(data)=>{
-    console.log(data);
-})
+
+console.log("edited aws");
+
+const getdataawspromise = new Promise((resolve, reject) => {
+  $.get("https://a1a9pfh1z4hsle-ats.iot.us-east-2.amazonaws.com", (data) => {
+    resolve(data);
+  }).fail((err) => {
+    reject("comment call failed" + err.status);
+  });
+});
+
+getdataawspromise.then((response) => {
+  console.log(response);
+});
+
+
+// //GETTING DATA FROM AWS...
+// console.log("edited");
+// $.get("a1a9pfh1z4hsle-ats.iot.us-east-2.amazonaws.com",(data)=>{
+//     console.log(data);
+// })
